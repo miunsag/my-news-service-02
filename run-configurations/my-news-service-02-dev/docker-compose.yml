@@ -14,6 +14,7 @@ services:
       # Our Code
       - ../../code/is-packages/MyNewsService/:${GUEST_IS_HOME}/packages/MyNewsService/
       - ../../code/is-packages/MyMailService/:${GUEST_IS_HOME}/packages/MyMailService/
+      - ../../code/is-packages/MyStartupNewsPush/:${GUEST_IS_HOME}/packages/MyStartupNewsPush/
     environment:
       - SAG_IS_LICENSE_FILE=/tmp/license.xml
       - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
@@ -25,4 +26,7 @@ services:
       - NEWSAPI_BASE_URL
       - NEWSAPI_API_KEY
       - PUSH_TO_EMAIL
+      # Startup news push options
+      - MY_NEWS_STARTUP_PUSH_QUERY
+      - MY_NEWS_STARTUP_LANGUAGE_CODES
     #entrypoint: /mnt/scripts/entrypoint.sh
