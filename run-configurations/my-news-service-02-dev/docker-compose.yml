@@ -1,13 +1,19 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  my-news-service-01-test:
-    image: ${TEST_CONTAINER_IMAGE}
+  my-news-service-02-dev:
+    image: ${CONTAINER_REGISTRY_URL}/${CONTAINER_IMAGE_REPOSITORY}:${CONTAINER_IMAGE_TAG}
     ports:
       - ${HOST_PORT_PREFIX}55:5555
     volumes:
       - ${HOST_MSR_LICENSE_FILE}:/tmp/license.xml
       - ./application.properties:/tmp/application.properties
+      - ../../:/mnt/project-home/
+      # - ./local/:/mnt/local/
+      - ./scripts/:/mnt/scripts/
+      # Our Code
+      - ../../code/is-packages/MyNewsService/:${GUEST_IS_HOME}/packages/MyNewsService/
+      - ../../code/is-packages/MyMailService/:${GUEST_IS_HOME}/packages/MyMailService/
     environment:
       - SAG_IS_LICENSE_FILE=/tmp/license.xml
       - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties
@@ -19,3 +25,4 @@ services:
       - NEWSAPI_BASE_URL
       - NEWSAPI_API_KEY
       - PUSH_TO_EMAIL
+    #entrypoint: /mnt/scripts/entrypoint.sh

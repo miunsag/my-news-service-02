@@ -5,8 +5,8 @@ trigger:
   - feature*
 
 pool:
-  name: WmDevOpsTutorialAgentsPool
-  vmImage: Canonical:0001-com-ubuntu-confidential-vm-focal:20_04-lts-gen2:latest
+  name: MiAmpDevOpsTutorial
+  vmImage: Canonical:0001-com-ubuntu-confidential-vm-focal:20_04-lts-cvm:latest
 
 steps:
 - script: chmod u+x ./buildScripts/*.sh
